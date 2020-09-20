@@ -1,2 +1,2 @@
-# simple-vue-js-
+# simple-vue-js
 application for web class
