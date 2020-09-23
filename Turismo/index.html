@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/core.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>1482</title>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Vue Js</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Turismo</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+    <div id="app">
+        <div class="container">
+            {{ message }}
+        </div>
+    </div>
+    <div id="myMessage">
+        <input v-model="message1" placeholder="Editame">
+        <p>Mensaje: {{ message1 }}</p>
+    </div>
+    <div id="ciudades">
+        <div class="row container">
+            <div v-for="item in ciudades" :key="item.title">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" :src="item.img" alt="Card image cap" height="200px"
+                            style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <div id="hide">
+                                <button class="btn btn-primary" v-on:click="item.isHidden = !item.isHidden">Clic para
+                                    esconder y
+                                    mostrar</button>
+                                <p class="card-text" v-if="!item.isHidden">{{item.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        var app = new Vue({ el: '#app', data: { message: 'Hello Vue!' } })
+        var example1 = new Vue({
+            el: '#ciudades',
+            data: {
+                ciudades: [
+                    { title: 'Cancún',isHidden: true, description: "“Vacaciones de primavera eternas” podría ser el lema de Cancún. Es todo sol, arena y buenas vibras. Aquí, unas ojotas y shorts de baño cuentan como “estar vestido” y la música de los clubes suena las 24 horas del día, los 7 días de la semana. Los bares en el agua no dejan de ofrecer cocteles a la multitud de veinteañeros. Pero las familias pueden encontrar su propio paraíso en uno de los muchos resorts con clubes para niños y piscinas gigantes.", img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/d5/84/caption.jpg?w=400&h=300&s=1" },
+                    { title: 'Playa del Carmen', isHidden: true, description: "Playa del Carmen es uno de los destinos de buceo más importantes del mundo, gracias a la vibrante vida marina y las deslumbrantes cavernas submarinas. En tierra firme, Playa es una versión más a la moda y más moderna que la aldea de pescadores que solía ser. Pasa un tiempo de calidad en el campo de golf o saluda a los juguetones monos araña en el santuario The Jungle Place. Explora las antiguas ruinas mayas de Cobá o involúcrate en alguna buena observación de personas mientras compras y paseas por la 5.ª avenida.", img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/eb/17/caption.jpg?w=800&h=-1&s=1" },
+                    { title: 'Puerto Vallarta', isHidden: true, description: "Dar un paseo, ir de compras y beber tequila por el paseo marítimo del Malecón de Puerto Vallarta es la mejor manera de comenzar tus vacaciones. Luego recorre las calles de piedra de la Viejo Vallarta para explorar el mercado de pulgas con artesanías hechas a mano. Las tranquilas y cálidas aguas de la Bahía de Banderas son excelentes para el buceo o simplemente puedes ver a los artistas que esculpen creaciones espectaculares en la arena. El grupo de galerías de arte de El Centro son lugares perfectos para hacer un tour autoguiado de arte.",  img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f5/6c/puerto-vallarta.jpg?w=400&h=300&s=1" },
+                    { title: 'Cabo San Lucas', isHidden: true, description: "Cabo San Lucas, que atrae a ruidosos turistas de primavera y celebridades de primer nivel, es el lugar ideal para pasar las vacaciones. Desde un relajante crucero en las tranquilas aguas del Mar de Cortés hasta frenéticas congas y tragos de tequila en Congo Bongo, Cabo te lleva por sus altibajos desde el día hasta la noche. Para descansar de las bulliciosas multitudes, dirígete a las calas y formaciones rocosas de las playas de Cannery. Los niños se divertirán en comunión con los animales de la zona haciendo avistamiento de ballenas o dando un paseo en camello por la Reserva Natural Parque del Desierto.",  img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/bf/3a/e9/wow.jpg?w=800&h=500&s=1" },
+                ]
+            }
+        })
+
+        var example2 = new Vue({
+            el: '#myMessage',
+            data: {
+                message1: ''
+             }
+        })
+
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
+    <!-- End Scripts -->
+</body>
+
+</html>
